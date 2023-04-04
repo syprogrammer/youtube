@@ -1,6 +1,6 @@
 import React from "react";
-
-const LeftNavMenuItem = ({ text, icon, className, action }) => {
+// Component to show sidenav category items 
+const MenuItem = ({ text, icon, className, action }) => {
     return (
         <div
             className={
@@ -15,4 +15,4 @@ const LeftNavMenuItem = ({ text, icon, className, action }) => {
     );
 };
 
-export default LeftNavMenuItem;
+export default MenuItem;

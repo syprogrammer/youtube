@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import ytLogo from "../images/yt-logo.png";
-import ytLogoMobile from "../images/yt-logo-mobile.png";
 
+// --------------- react icons------------ 
 import { SlMenu } from "react-icons/sl";
 import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
@@ -11,14 +10,17 @@ import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
 
 import { Context } from "../context/contextApi";
+
+// ---------Loader Component---------
 import  Loader  from "./Loader";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { loading, mobileMenu, setMobileMenu } = useContext(Context);
+  const { loading, sideNavHamburger, setSideNavHamburger } = useContext(Context);
 
   const navigate = useNavigate();
 
+  // -------------Search form submit function---------------
   const searchQueryHandler = (event) => {
     if (
       (event?.key === "Enter" || event === "searchButton") &&
@@ -28,23 +30,26 @@ const Header = () => {
     }
   };
 
+  // -------------- showing hamburger in smaller device toggler ------- 
   const mobileMenuToggle = () => {
-    setMobileMenu(!mobileMenu);
+    setSideNavHamburger(!sideNavHamburger);
   };
 
   const { pathname } = useLocation();
   const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
+
   return (
     <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 py-2 md:px-5 bg-black dark:bg-black">
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">
+        {/* -----------Not showing sidenav on video details page --------------  */}
         {pageName !== "video" && (
           <div
             className="flex md:hidden md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
             onClick={mobileMenuToggle}
           >
-            {mobileMenu ? (
+            {sideNavHamburger? (
               <CgClose className="text-white text-xl" />
             ) : (
               <SlMenu className="text-white text-xl" />
@@ -54,12 +59,12 @@ const Header = () => {
         <Link to="/" className="flex h-5 items-center">
           <img
             className="h-full hidden md:block"
-            src={ytLogo}
+            src="./yt-logo.png"
             alt="Youtube"
           />
           <img
             className="h-full md:hidden"
-            src={ytLogoMobile}
+            src="./yt-logo-mobile.png"
             alt="Youtube"
           />
         </Link>

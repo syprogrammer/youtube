@@ -1,9 +1,9 @@
 import React from "react";
 import { abbreviateNumber } from "js-abbreviation-number";
-import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-
 import VideoLength from "./videoLength";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+
 
 const SuggestionVideoCard = ({ video }) => {
     return (
@@ -26,8 +26,8 @@ const SuggestionVideoCard = ({ video }) => {
                         {video?.author?.title}
                         {video?.author?.badges[0]?.type ===
                             "VERIFIED_CHANNEL" && (
-                            <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] lg:text-[10px] xl:text-[12px] ml-1" />
-                        )}
+                                <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] lg:text-[10px] xl:text-[12px] ml-1" />
+                            )}
                     </span>
                     <div className="flex text-[12px] lg:text-[10px] xl:text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
                         <span>{`${abbreviateNumber(
@@ -35,7 +35,7 @@ const SuggestionVideoCard = ({ video }) => {
                             2
                         )} views`}</span>
                         <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
-                            .
+                        {/* Created by Syprogrammer Github:- https://github.com/syprogrammer */}
                         </span>
                         <span className="truncate">
                             {video?.publishedTimeText}

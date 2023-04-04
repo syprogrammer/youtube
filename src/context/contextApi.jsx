@@ -1,21 +1,22 @@
 import React, { createContext, useState, useEffect } from "react";
 
-import { fetchData } from "../utils/api";
+import { fetchData } from "../api/videoApi";
 export const Context = createContext();
 
 export const AppContext = (props) => {
     const [loading, setLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("New");
-    const [mobileMenu, setMobileMenu] = useState(false);
+    const [sideNavHamburger, setSideNavHamburger] = useState(false);
 
     useEffect(() => {
         fetchSelectedCategoryData(selectedCategory);
     }, [selectedCategory]);
 
-    const fetchSelectedCategoryData = (query) => {
+    const fetchSelectedCategoryData = async (query) => {
         setLoading(true);
-        fetchData(`search/?q=${query}`).then(({ contents }) => {
+        fetchData(`search/?q=${query}`)
+          .then(({ contents }) => {
             console.log(contents);
             setSearchResults(contents);
             setLoading(false);
@@ -30,8 +31,8 @@ export const AppContext = (props) => {
                 searchResults,
                 selectedCategory,
                 setSelectedCategory,
-                mobileMenu,
-                setMobileMenu,
+                sideNavHamburger,
+                setSideNavHamburger,
             }}
         >
             {props.children}

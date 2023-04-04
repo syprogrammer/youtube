@@ -1,3 +1,4 @@
+// component which converts seconds into correct time format
 import React from "react";
 import moment from "moment";
 

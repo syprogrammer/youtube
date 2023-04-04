@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import React from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import {Header,Feed,SearchResult,VideoDetails} from './components'
+import {Header} from './components'
+import {Feed,SearchResult,VideoDetails} from './pages'
 import {AppContext} from './context/contextApi'
 
-import './App.css'
+// Created by Syprogrammer Github:- https://github.com/syprogrammer
+
 
 function App() {
   
-
   return (
     <AppContext>
     <BrowserRouter>
